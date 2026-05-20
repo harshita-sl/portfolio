@@ -24,26 +24,49 @@ const SkillsOrbit = ({ skills }) => {
     const existingOrbs = wrap.querySelectorAll('.skill-orb');
     existingOrbs.forEach(el => el.remove());
 
-    const rads = [110, 185, 260];
     const byRing = [
       parsedSkills.filter(s => s.r === 0),
       parsedSkills.filter(s => s.r === 1),
       parsedSkills.filter(s => s.r === 2)
     ];
 
+    // Create all orbs
     byRing.forEach((ring, ri) => {
       ring.forEach((skill, si) => {
         const a = (si / ring.length) * Math.PI * 2 - Math.PI / 2;
-        const cx = 270 + rads[ri] * Math.cos(a);
-        const cy = 270 + rads[ri] * Math.sin(a);
         const orb = document.createElement('div');
         orb.className = 'skill-orb';
+        orb.dataset.ring = ri;
+        orb.dataset.angle = a;
         orb.textContent = skill.n;
-        orb.style.left = cx + 'px';
-        orb.style.top = cy + 'px';
         wrap.appendChild(orb);
       });
     });
+
+    // Position function based on current screen size
+    const updatePositions = () => {
+      const isMobile = window.innerWidth <= 800;
+      const rads = isMobile ? [85, 135, 0] : [140, 245, 350];
+      const center = isMobile ? 150 : 360;
+      
+      const orbs = wrap.querySelectorAll('.skill-orb');
+      orbs.forEach(orb => {
+        const ri = parseInt(orb.dataset.ring, 10);
+        const a = parseFloat(orb.dataset.angle);
+        if (isMobile && ri === 2) {
+          orb.style.display = 'none';
+        } else {
+          orb.style.display = '';
+          const cx = center + rads[ri] * Math.cos(a);
+          const cy = center + rads[ri] * Math.sin(a);
+          orb.style.left = cx + 'px';
+          orb.style.top = cy + 'px';
+        }
+      });
+    };
+
+    updatePositions();
+    window.addEventListener('resize', updatePositions);
 
     let oa = 0;
     let reqId;
@@ -57,7 +80,10 @@ const SkillsOrbit = ({ skills }) => {
     };
     animOrbit();
 
-    return () => cancelAnimationFrame(reqId);
+    return () => {
+      cancelAnimationFrame(reqId);
+      window.removeEventListener('resize', updatePositions);
+    };
   }, [skills]);
 
   return (

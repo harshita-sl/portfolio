@@ -1,9 +1,6 @@
-import droneVideo from '../assets/drone_video.mp4';
 import image1 from '../assets/image.png';
 import image2 from '../assets/image2.png';
 import image3 from '../assets/image3.png';
-import vi1 from '../assets/vi1.mp4';
-import vi2 from '../assets/vi2.mp4';
 
 export const resumeData = {
   header: {
@@ -36,7 +33,7 @@ export const resumeData = {
   projects: [
     {
       title: "Autonomous Precision Landing of Quadrotor on Aruco Marker",
-      video: droneVideo,
+      video: `${import.meta.env.BASE_URL}videos/drone_video.mp4`,
       link: { text: "View Repo", url: "https://github.com/harshita-sl/Autonomous_quad_landing" },
       bullets: [
         "Developed and tested autonomous flight control algorithms for vision-based precision landing using ArUco marker detection",
@@ -98,8 +95,8 @@ export const resumeData = {
         { type: 'image', src: image1 },
         { type: 'image', src: image2 },
         { type: 'image', src: image3 },
-        { type: 'video', src: vi1 },
-        { type: 'video', src: vi2 }
+        { type: 'video', src: `${import.meta.env.BASE_URL}videos/vi1.mp4` },
+        { type: 'video', src: `${import.meta.env.BASE_URL}videos/vi2.mp4` }
       ]
     }
   ]
