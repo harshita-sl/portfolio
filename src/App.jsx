@@ -95,6 +95,7 @@ function App() {
       <About data={resumeData.header} />
       <Timeline 
         education={resumeData.education} 
+        experience={resumeData.experience} 
         projects={resumeData.projects} 
         achievements={resumeData.achievements} 
         simulations={resumeData.simulations}

@@ -188,7 +188,7 @@ const TimelineNode = ({ item, isLeft }) => {
   );
 };
 
-const Timeline = ({ education, projects, achievements, simulations }) => {
+const Timeline = ({ education, experience, projects, achievements, simulations }) => {
   let isLeft = true;
   const tlRef = useRef(null);
   const glowRef = useRef(null);
@@ -224,6 +224,7 @@ const Timeline = ({ education, projects, achievements, simulations }) => {
       <div className="spine"></div>
       <div className="spine-glow" ref={glowRef}></div>
       {renderList('Education', education || [])}
+      {renderList('Experience', experience || [])}
       {renderList('Projects', projects || [])}
       {renderList('Achievements', achievements || [])}
       {renderList('Simulations', simulations || [])}

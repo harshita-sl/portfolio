@@ -30,6 +30,22 @@ export const resumeData = {
       score: "Best SG: 8.6 | CGPA: 8.39"
     }
   ],
+  experience: [
+    {
+      period: "May 2026 - Present",
+      title: "AI Engineer Intern",
+      institution: "APTransco (Transmission Corporation of Andhra Pradesh)",
+      badge: "2 Months",
+      link: { text: "Project Repo", url: "https://github.com/harshita-sl/Demand-Forecasting" },
+      bullets: [
+        "Developing advanced short-term (day-ahead, intra-day) and medium-term demand forecasting models using deep learning architectures (LSTMs, Transformer networks).",
+        "Incorporating weather patterns, festivals, agricultural pump-set schedules, industrial load cycles, and socio-economic indicators specific to Andhra Pradesh to capture non-linear patterns.",
+        "Integrating probabilistic forecasting to compute confidence intervals, helping State Load Despatch Center (SLDC) operators make risk-informed scheduling decisions.",
+        "Delivering multi-horizon forecasting models, feature importance analyses, regional load-clustering studies, and a real-time forecast dashboard to reduce over/under-procurement and improve grid stability."
+      ],
+      techStack: ["Deep Learning", "LSTMs", "Transformers", "Time Series Forecasting", "Python", "Pandas", "scikit-learn"]
+    }
+  ],
   projects: [
     {
       title: "Autonomous Precision Landing of Quadrotor on Aruco Marker",
@@ -84,6 +100,11 @@ export const resumeData = {
       title: "Core Member - Blockchain Society (BIB)",
       link: { text: "IIT Bhilai", url: "#" },
       description: "Core member of Blockchain at IIT Bhilai technical society. Organized workshops and hackathons."
+    },
+    {
+      title: "Maintainer - OpenLake",
+      link: { text: "IIT Bhilai", url: "https://github.com/OpenLake" },
+      description: "Maintainer of the student-led open-source development club at IIT Bhilai. Mentored juniors, managed university-wide projects, and promoted open-source culture on campus."
     }
   ],
   simulations: [
