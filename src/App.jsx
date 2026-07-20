@@ -5,6 +5,7 @@ import './index.css';
 import Navbar from './components/Navbar';
 import Starfield from './components/Starfield';
 import Hero from './components/Hero';
+import Work from './components/Work';
 import About from './components/About';
 import Timeline from './components/Timeline';
 import SkillsOrbit from './components/SkillsOrbit';
@@ -92,6 +93,7 @@ function App() {
       <Starfield />
       <Navbar />
       <Hero data={resumeData.header} />
+      <Work projects={resumeData.projects} />
       <About data={resumeData.header} />
       <Timeline 
         education={resumeData.education} 
@@ -100,7 +102,7 @@ function App() {
         achievements={resumeData.achievements} 
         simulations={resumeData.simulations}
       />
-      <SkillsOrbit skills={resumeData.skills} />
+      <SkillsOrbit skills={resumeData.skills} projects={resumeData.projects} />
       <Contact email={emailLink} links={contactLinks} />
     </>
   );

@@ -1,6 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 
-const SkillsOrbit = ({ skills }) => {
+const normalize = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+const findEvidence = (skillName, projects) => {
+  if (!projects) return [];
+  const n = normalize(skillName);
+  return projects
+    .filter(p => (p.techStack || []).some(t => {
+      const nt = normalize(t);
+      return nt.includes(n) || n.includes(nt);
+    }))
+    .map(p => p.title);
+};
+
+const SkillsOrbit = ({ skills, projects }) => {
   const wrapRef = useRef(null);
 
   // Flatten skills into a ring array where r=0, r=1, r=2 based on category or index
@@ -11,7 +24,8 @@ const SkillsOrbit = ({ skills }) => {
     list.forEach(skillName => {
       parsedSkills.push({
         n: skillName,
-        r: Math.min(index, 2) // limit to 3 rings max (0, 1, 2)
+        r: Math.min(index, 2), // limit to 3 rings max (0, 1, 2)
+        evidence: findEvidence(skillName, projects)
       });
     });
   });
@@ -35,10 +49,13 @@ const SkillsOrbit = ({ skills }) => {
       ring.forEach((skill, si) => {
         const a = (si / ring.length) * Math.PI * 2 - Math.PI / 2;
         const orb = document.createElement('div');
-        orb.className = 'skill-orb';
+        orb.className = skill.evidence.length ? 'skill-orb has-evidence' : 'skill-orb';
         orb.dataset.ring = ri;
         orb.dataset.angle = a;
         orb.textContent = skill.n;
+        if (skill.evidence.length) {
+          orb.title = `Used on ${skill.evidence.join(', ')}`;
+        }
         wrap.appendChild(orb);
       });
     });
@@ -84,7 +101,7 @@ const SkillsOrbit = ({ skills }) => {
       cancelAnimationFrame(reqId);
       window.removeEventListener('resize', updatePositions);
     };
-  }, [skills]);
+  }, [skills, projects]);
 
   return (
     <section id="skills-section">

@@ -40,7 +40,10 @@ const Hero = ({ data }) => {
             ))}
           </div>
         </div>
-        <p className="hero-subtitle">Engineer · <em>Roboticist</em> · ML Explorer · <em>3D Artist</em></p>
+        <p className="hero-subtitle">
+          Mechanical engineering at IIT Bhilai. I build systems that predict and systems that act —
+          a <em>quadrotor that lands itself on a marker</em>, and short-term load forecasting for a state grid.
+        </p>
       </div>
 
       <div className="scroll-cue">

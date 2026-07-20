@@ -21,8 +21,9 @@ const About = ({ data }) => {
               My journey involves bridging the gap between mechanical systems and intelligent software, specializing in autonomous drone systems, vision-based navigation, and high-fidelity simulations.
             </p>
             <p className="about-text">
-              I am deeply invested in the integration of <strong>Blockchain technology</strong> with <strong>Machine Learning</strong> to create decentralized, high-trust intelligent systems. 
-              My work explores how predictive models can be deployed on-chain for secure data verification and automated decision-making in robotics and smart infrastructure.
+              I'm currently an <strong>AI Engineer Intern at APTransco</strong>, building short- and medium-term demand
+              forecasting models for the <strong>Andhra Pradesh state grid</strong> — as a second-year engineering
+              student working on forecasting infrastructure that real grid operators use to make scheduling decisions.
             </p>
           </div>
           
