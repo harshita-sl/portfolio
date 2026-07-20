@@ -14,10 +14,14 @@ const Hero = ({ data }) => {
     <section id="hero">
       <div className="hero-spline">
         <div className="spline-wrap">
-          <spline-viewer 
-            url="https://prod.spline.design/75fTLlPIu8VIqV9G/scene.splinecode" 
-            style={{ width: "100%", height: "100%" }}>
-          </spline-viewer>
+          <video
+            src={`${import.meta.env.BASE_URL}videos/gazebo_demo.webm`}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
         </div>
       </div>
 
