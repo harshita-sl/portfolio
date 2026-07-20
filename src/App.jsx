@@ -7,7 +7,7 @@ import Starfield from './components/Starfield';
 import Hero from './components/Hero';
 import Work from './components/Work';
 import About from './components/About';
-import Timeline from './components/Timeline';
+import MissionConsole from './components/MissionConsole';
 import SkillsOrbit from './components/SkillsOrbit';
 import Contact from './components/Contact';
 
@@ -95,11 +95,10 @@ function App() {
       <Hero data={resumeData.header} />
       <Work projects={resumeData.projects} />
       <About data={resumeData.header} />
-      <Timeline 
-        education={resumeData.education} 
-        experience={resumeData.experience} 
-        projects={resumeData.projects} 
-        achievements={resumeData.achievements} 
+      <MissionConsole
+        education={resumeData.education}
+        experience={resumeData.experience}
+        achievements={resumeData.achievements}
         simulations={resumeData.simulations}
       />
       <SkillsOrbit skills={resumeData.skills} projects={resumeData.projects} />

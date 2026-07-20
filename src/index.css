@@ -257,112 +257,102 @@ body::after {
 }
 
 
-/* TIMELINE */
-#timeline { position:relative; z-index:1; padding:0 0 8rem; }
-.spine {
-  position:absolute; left:50%; top:0; bottom:0; width:1px;
-  background:linear-gradient(var(--line), rgba(201,168,76,.45) 20%, rgba(201,168,76,.45) 80%, var(--line));
-  transform:translateX(-50%);
-}
-.spine-glow {
-  position:absolute; left:50%; top:0; width:3px;
-  background:var(--gold); transform:translateX(-50%); height:0;
-  box-shadow:0 0 18px var(--gold),0 0 50px rgba(201,168,76,.25);
-  transition:height .15s linear;
-  z-index: 1;
-}
-.chapter {
-  position:relative; display:flex; align-items:center; justify-content:center;
-  padding:5rem 0 2rem;
-}
-.chapter-label {
-  font-family: var(--font-display); 
-  font-weight: 800;
-  font-size: 0.95rem; 
-  letter-spacing: 0.25em;
-  text-transform: uppercase; 
-  color: var(--ink); 
-  padding: 0.6rem 2rem;
-  border: 1px solid var(--gold); 
-  background: linear-gradient(135deg, rgba(var(--bg-rgb), 0.9), rgba(var(--bg-rgb), 0.4));
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15), inset 0 0 15px rgba(201,168,76,0.1);
-  position: relative; 
-  z-index: 2;
-  border-radius: 4px;
-}
-.chapter::before,.chapter::after { content:''; flex:1; max-width:220px; height:1px; background:var(--line); }
+/* MISSION LOG */
+#timeline { position:relative; z-index:1; padding:8rem 5% 6rem; text-align:center; }
 
-.node {
-  display:grid; grid-template-columns:1fr 80px 1fr;
-  align-items:start; padding:1.8rem 5rem;
-  position:relative; opacity:0; transition:opacity .85s ease, transform .85s ease;
+.mission-grid {
+  max-width: 1200px;
+  margin: 4rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  text-align: left;
 }
-.node.left-node { transform:translateX(-55px); }
-.node.right-node { transform:translateX(55px); }
-.node.visible { opacity:1; transform:translateX(0); }
 
-.node-dot { grid-column:2; display:flex; justify-content:center; padding-top:1.6rem; position:relative; z-index:2; }
-.dot-outer {
-  width:16px; height:16px; border-radius:50%;
-  border:1px solid var(--gold); background: var(--bg);
-  display:flex; align-items:center; justify-content:center;
-  transition:transform .3s, box-shadow .3s;
-}
-.dot-outer:hover { transform:scale(1.6); box-shadow:0 0 18px var(--gold); }
-.dot-inner { width:5px; height:5px; border-radius:50%; background:var(--gold); }
-
-.left-node .node-content { grid-column:1; }
-.left-node .node-dot { grid-column:2; }
-.right-node .node-content { grid-column:3; }
-.right-node .node-dot { grid-column:2; }
-
-.node-card {
+.mission-tile {
   background: rgba(var(--bg-rgb), 0.85);
-  border:1px solid rgba(201,168,76,.15);
-  border-radius:6px; padding:1.8rem 2rem; position:relative; overflow:hidden;
-  transition:border-color .3s, transform .3s;
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: 6px;
+  padding: 1.6rem 1.8rem;
+  position: relative;
   backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease, border-color .3s ease, box-shadow .3s ease;
 }
-.node-card:hover { border-color:rgba(201,168,76,.35); transform:translateY(-4px); }
-.card-accent-left { border-left:3px solid var(--gold); }
-.card-accent-right { border-right:3px solid var(--gold); }
-.left-node .node-card { text-align:right; }
+.mission-tile.visible { opacity: 1; transform: translateY(0); }
+.mission-tile:hover { border-color: rgba(201,168,76,.4); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+.mission-tile-clickable { cursor: pointer; }
 
-.card-year { 
-  font-family: var(--font-main); 
+.mission-tile-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+.mission-marker { color: var(--gold); opacity: 0.8; }
+.mission-category {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 500;
-  font-size: 0.75rem; 
-  color: var(--gold); 
-  letter-spacing: 0.15em; 
-  margin-bottom: 0.5rem; 
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dim);
 }
-.card-title { 
-  font-family: var(--font-display); 
-  font-size: 1.6rem; 
+
+.mission-meta { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
+.mission-period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.mission-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.02em; 
-  color: var(--ink); 
-  line-height: 1.2; 
-  margin-bottom: 0.5rem; 
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 0.3rem;
 }
-.card-sub { 
-  font-family: var(--font-main); 
-  font-weight: 400;
-  font-size: 1.05rem; 
-  color: var(--dim); 
-  margin-bottom: 0.8rem; 
+.mission-sub {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  color: var(--dim);
+  margin-bottom: 0.8rem;
 }
-.card-body { 
-  font-size: 0.95rem; 
-  line-height: 1.7; 
-  color: var(--ink); 
-  opacity: 0.85; 
-  font-family: var(--font-main); 
-  font-weight: 300; 
+.mission-body {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink);
+  opacity: 0.85;
 }
+.mission-bullets {
+  margin: 0 0 0.4rem 1.1rem;
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink);
+  opacity: 0.85;
+}
+.mission-tags { margin-top: 1rem; }
+.mission-link-icon {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  font-size: 1.1rem;
+  color: var(--gold);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+.mission-tile-clickable:hover .mission-link-icon { opacity: 1; }
+
 .card-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1.2rem; }
-.left-node .card-tags { justify-content:flex-end; }
-.tag { 
+.tag {
   font-family: var(--font-main);
   font-weight: 500;
   font-size: 0.7rem; 
@@ -502,13 +492,7 @@ body::after {
   
   .spline-wrap { height: 50vh; }
 
-  .node{grid-template-columns:40px 1fr;padding:1.5rem 1.5rem;}
-  .spine {left:1.8rem;}
-  .left-node .node-content,.right-node .node-content{grid-column:2;}
-  .node-dot{grid-column:1;grid-row:1;}
-  .left-node .node-dot,.right-node .node-dot{grid-column:1;grid-row:1;}
-  .left-node .node-card{text-align:left;border-right:none;border-left:3px solid var(--gold);}
-  .left-node .card-tags{justify-content:flex-start;}
+  .mission-grid { grid-template-columns: 1fr; }
   .skills-orbit-wrap{width:300px;height:300px;}
   .orbit-ring-1 { width: 170px; height: 170px; }
   .orbit-ring-2 { width: 270px; height: 270px; }
@@ -650,37 +634,6 @@ body::after {
   color: var(--gold);
 }
 
-/* ── TIMELINE ENHANCEMENTS ── */
-.clickable-card {
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.clickable-card:hover {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.card-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.left-node .card-header-flex {
-  flex-direction: row-reverse;
-}
-
-.card-link-icon {
-  font-size: 1.2rem;
-  color: var(--gold);
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.clickable-card:hover .card-link-icon {
-  opacity: 1;
-}
-
 /* ── SIMULATION SHOWCASE ── */
 .btn-gallery-toggle {
   background: transparent;
@@ -693,6 +646,7 @@ body::after {
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 0.5rem;
 }
 
 .btn-gallery-toggle:hover {
