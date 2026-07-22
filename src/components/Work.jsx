@@ -55,7 +55,7 @@ const Work = ({ projects }) => {
   return (
     <section id="work">
       <div className="section-heading">Work</div>
-      <p className="section-sub">Four projects, read as case studies</p>
+      <p className="section-sub">Forecasting, classification, and control — four projects, read as case studies</p>
       <div className="work-list">
         {(projects || []).map((project) => (
           <WorkCase key={project.id} project={project} />

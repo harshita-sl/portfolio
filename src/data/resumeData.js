@@ -48,26 +48,6 @@ export const resumeData = {
   ],
   projects: [
     {
-      id: "precision-landing",
-      title: "Autonomous Precision Landing of Quadrotor on ArUco Marker",
-      video: `${import.meta.env.BASE_URL}videos/drone_video.mp4`,
-      link: { text: "View Repo", url: "https://github.com/harshita-sl/Autonomous_quad_landing" },
-      domain: "Robotics · Controls",
-      context: "Independent build, IIT Bhilai",
-      bullets: [
-        "Delivered a real-time perception-to-control pipeline (marker detection → pose estimate → setpoint command) running under latency constraints on embedded hardware.",
-        "Integrated PX4, Gazebo, ROS2 Humble, MAVROS, Pixhawk 2.4.8, and Raspberry Pi 5 on Linux; validated in simulation before deploying to the physical build."
-      ],
-      techStack: ["PX4", "ROS2 Humble", "Gazebo", "MAVROS", "OpenCV (ArUco)", "Pixhawk 2.4.8", "Raspberry Pi 5", "Python", "Linux"],
-      caseStudy: {
-        problem: "Land a quadrotor precisely on a marked target with no human in the loop — GPS-grade positioning isn't precise enough for a controlled touchdown, so the drone has to see the marker and correct itself on the way down.",
-        built: "A perception-to-control pipeline: a downward camera feed runs ArUco marker detection, the marker's pose is converted into a position error relative to the drone, and that error is sent to PX4 as a stream of setpoint commands over MAVROS — closing the loop entirely onboard.",
-        decision: "Ran the full pipeline in Gazebo against PX4's SITL before touching hardware, rather than iterating directly on the physical build — flight-control bugs are expensive and slow to debug when a mistake costs a propeller or a bent frame.",
-        simGap: "Simulation doesn't have to deal with camera exposure shifting as the drone descends, marker detection dropping frames under real lighting, or the round-trip latency between a detection and the setpoint actually reaching the flight controller. Those constraints only became visible once the pipeline moved from Gazebo onto the Pixhawk 2.4.8 and Raspberry Pi 5, and they're what ended up shaping how the setpoint loop was tuned.",
-        landed: "A working sim-to-hardware pipeline: PX4 + Gazebo Classic + ROS2 Humble + MAVROS for validation, Pixhawk 2.4.8 and Raspberry Pi 5 as the onboard compute for the physical descent-and-land sequence."
-      }
-    },
-    {
       id: "gridlock-hackathon",
       title: "Gridlock Hackathon — Traffic Demand Prediction (Flipkart)",
       link: null,
@@ -123,6 +103,26 @@ export const resumeData = {
         decision: "Prioritized correlation and seasonality analysis over jumping straight to a forecasting model — understanding which covariates actually carry signal has to come before trusting any model built on top of them.",
         simGap: "This was analysis, not deployment — the open question this project leaves is whether the same seasonal structure holds up in a live forecasting pipeline the way it does in a historical dataset.",
         landed: "A set of visualized seasonal and covariate-correlation findings useful for renewable energy planning and power-plant optimization, addressing supply variability."
+      }
+    },
+    {
+      id: "precision-landing",
+      title: "Autonomous Precision Landing of Quadrotor on ArUco Marker",
+      video: `${import.meta.env.BASE_URL}videos/drone_video.mp4`,
+      link: { text: "View Repo", url: "https://github.com/harshita-sl/Autonomous_quad_landing" },
+      domain: "Robotics · Controls",
+      context: "Independent build, IIT Bhilai",
+      bullets: [
+        "Delivered a real-time perception-to-control pipeline (marker detection → pose estimate → setpoint command) running under latency constraints on embedded hardware.",
+        "Integrated PX4, Gazebo, ROS2 Humble, MAVROS, Pixhawk 2.4.8, and Raspberry Pi 5 on Linux; validated in simulation before deploying to the physical build."
+      ],
+      techStack: ["PX4", "ROS2 Humble", "Gazebo", "MAVROS", "OpenCV (ArUco)", "Pixhawk 2.4.8", "Raspberry Pi 5", "Python", "Linux"],
+      caseStudy: {
+        problem: "Land a quadrotor precisely on a marked target with no human in the loop — GPS-grade positioning isn't precise enough for a controlled touchdown, so the drone has to see the marker and correct itself on the way down.",
+        built: "A perception-to-control pipeline: a downward camera feed runs ArUco marker detection, the marker's pose is converted into a position error relative to the drone, and that error is sent to PX4 as a stream of setpoint commands over MAVROS — closing the loop entirely onboard.",
+        decision: "Ran the full pipeline in Gazebo against PX4's SITL before touching hardware, rather than iterating directly on the physical build — flight-control bugs are expensive and slow to debug when a mistake costs a propeller or a bent frame.",
+        simGap: "Simulation doesn't have to deal with camera exposure shifting as the drone descends, marker detection dropping frames under real lighting, or the round-trip latency between a detection and the setpoint actually reaching the flight controller. Those constraints only became visible once the pipeline moved from Gazebo onto the Pixhawk 2.4.8 and Raspberry Pi 5, and they're what ended up shaping how the setpoint loop was tuned.",
+        landed: "A working sim-to-hardware pipeline: PX4 + Gazebo Classic + ROS2 Humble + MAVROS for validation, Pixhawk 2.4.8 and Raspberry Pi 5 as the onboard compute for the physical descent-and-land sequence."
       }
     }
   ],

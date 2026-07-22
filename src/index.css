@@ -127,33 +127,13 @@ body::after {
   padding: 18vh 5% 0 5%; /* Pushes the text exactly where it should sit */
 }
 
-.hero-spline {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0; /* Behind the text */
-  opacity: 0.85; /* Blend well with background */
-  pointer-events: none;
-  filter: drop-shadow(0 0 100px rgba(var(--bg-rgb), 1));
-}
-
-/* Constrain video size so it's not massive, but still fits well */
-.spline-wrap {
-  width: 100%;
-  height: 100%; /* Fill the whole hero container */
-  position: relative;
-}
-
 .hero-content {
   position: relative;
-  z-index: 2; /* On top of Spline */
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  pointer-events: none; /* Allows interacting with Spline underneath */
-  margin-bottom: 0; /* Remove arbitrary bottom margin */
+  margin-bottom: 0;
 }
 
 .hero-tag {
@@ -208,14 +188,14 @@ body::after {
 .hero-subtitle {
   font-family: var(--font-main);
   font-weight: 400;
-  font-size: clamp(1rem, 2vw, 1.25rem); 
-  color: var(--ink); /* Stronger visibility on top of Spline */
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--ink);
   letter-spacing: 0.05em;
-  opacity: 0; 
-  animation: fadeUp .8s 1.3s ease forwards; 
-  margin-bottom: 3rem;
-  /* subtle glow to keep text readable against spline */
-  text-shadow: 0 0 10px rgba(var(--bg-rgb), 0.8), 0 0 20px rgba(var(--bg-rgb), 0.8);
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp .8s 1.3s ease forwards;
+  margin: 0 auto 3rem;
+  max-width: 760px;
 }
 .hero-subtitle em { color: var(--teal); font-style: normal; }
 
@@ -489,8 +469,6 @@ body::after {
   .name-shadow { transform: translate(-50%, -50%); left: 50%; }
   .navbar { padding: 1rem 2rem; flex-wrap: wrap; }
   .nav-links { gap: 1.5rem; margin-top: 0.5rem;}
-  
-  .spline-wrap { height: 50vh; }
 
   .mission-grid { grid-template-columns: 1fr; }
   .skills-orbit-wrap{width:300px;height:300px;}

@@ -17,13 +17,18 @@ const About = ({ data }) => {
         <div className="about-grid">
           <div className="about-main">
             <p className="about-text">
-              I am a <strong>Mechanical Engineering student</strong> at <strong>IIT Bhilai</strong> with a deep focus on <strong>Robotics</strong> and <strong>Machine Learning</strong>. 
-              My journey involves bridging the gap between mechanical systems and intelligent software, specializing in autonomous drone systems, vision-based navigation, and high-fidelity simulations.
+              I'm a <strong>Mechanical Engineering student</strong> at <strong>IIT Bhilai</strong> who builds
+              <strong> software and machine learning systems</strong> — forecasting models, classification
+              pipelines, and control systems. I care less about which domain a problem sits in and more about
+              whether the solution holds up outside a notebook: in production, under a hackathon deadline, or on
+              physical hardware.
             </p>
             <p className="about-text">
-              I'm currently an <strong>AI Engineer Intern at APTransco</strong>, building short- and medium-term demand
-              forecasting models for the <strong>Andhra Pradesh state grid</strong> — as a second-year engineering
-              student working on forecasting infrastructure that real grid operators use to make scheduling decisions.
+              I'm currently an <strong>AI Engineer Intern at APTransco</strong>, building demand forecasting models
+              for the <strong>Andhra Pradesh state grid</strong> — production forecasting infrastructure that real
+              grid operators use to make scheduling decisions. Outside of that, I've built ensemble models for a
+              Flipkart hackathon, a classification pipeline that won an Intra-IIT ML challenge, and a
+              perception-to-control pipeline for an autonomous quadrotor.
             </p>
           </div>
           

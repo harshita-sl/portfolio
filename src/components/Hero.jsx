@@ -12,19 +12,6 @@ const Hero = ({ data }) => {
 
   return (
     <section id="hero">
-      <div className="hero-spline">
-        <div className="spline-wrap">
-          <video
-            src={`${import.meta.env.BASE_URL}videos/gazebo_demo.webm`}
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        </div>
-      </div>
-
       <div className="hero-content">
         <div className="hero-tag">B.Tech · IIT Bhilai · 2024–2028</div>
         <div className="name-wrap">
@@ -41,8 +28,10 @@ const Hero = ({ data }) => {
           </div>
         </div>
         <p className="hero-subtitle">
-          Mechanical engineering at IIT Bhilai. I build systems that predict and systems that act —
-          a <em>quadrotor that lands itself on a marker</em>, and short-term load forecasting for a state grid.
+          Mechanical engineering at IIT Bhilai, building <em>software and machine learning systems</em> —
+          demand forecasting for a state power grid, classification and ensemble models for ML competitions,
+          and <em>autonomous control</em> for a quadrotor. I like problems where the model has to hold up
+          outside a notebook.
         </p>
       </div>
 
