@@ -7,7 +7,7 @@ export const resumeData = {
     name: "Harshita Sharma",
     links: [
       { label: "GitHub", text: "harshita-sl", url: "https://github.com/harshita-sl" },
-      { label: "LinkedIn", text: "Harshita Sharma", url: "https://linkedin.com/in/harshita-sharma" },
+      { label: "LinkedIn", text: "Harshita Sharma", url: "https://linkedin.com/in/harshita-slr" },
       { label: "Email", text: "harshitas@iitbhilai.ac.in", url: "mailto:harshitas@iitbhilai.ac.in" },
       { label: "Phone", text: "+91 9990379497", url: "tel:+919990379497" }
     ],
@@ -36,7 +36,7 @@ export const resumeData = {
       title: "AI Engineer Intern",
       institution: "APTransco (State Load Dispatch Centre)",
       badge: "Current",
-      link: { text: "Project Repo", url: "https://github.com/harshita-sl/Demand-Forecasting" },
+      link: { text: "Project Repo" },
       bullets: [
         "Build short-horizon forecasting models (LSTM, Transformer) on high-frequency demand time-series, benchmarked against statistical and gradient-boosted baselines with walk-forward, out-of-sample evaluation.",
         "Engineer predictive features from noisy multi-source signals – weather, festival calendars, agricultural pump usage, industrial load cycles – and quantify each one's marginal contribution to forecast error.",
@@ -70,7 +70,7 @@ export const resumeData = {
     {
       id: "asteroid-risk",
       title: "Asteroid Risk Classification",
-      link: { text: "Notebook", url: "https://colab.research.google.com/drive/1FRw6fwIQ8R711dM7VIZPZESYOUsXBIrf" },
+      link: { text: "Notebook", url: "https://github.com/harshita-sl/Aestroid-risk-classification" },
       domain: "ML · Classification",
       context: "Intra-IIT ML Challenge · 1st Position",
       bullets: [
