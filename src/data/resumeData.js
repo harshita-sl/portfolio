@@ -48,23 +48,22 @@ export const resumeData = {
   ],
   projects: [
     {
-      id: "gridlock-hackathon",
-      title: "Gridlock Hackathon — Traffic Demand Prediction (Flipkart)",
+      id: "aptransco-forecasting",
+      title: "Demand Forecasting — APTransco (State Load Despatch Centre)",
       link: null,
-      domain: "ML · Forecasting",
-      context: "Flipkart Gridlock Hackathon · 3rd Position",
+      domain: "ML · Production Systems",
+      context: "AI Engineer Intern · APTransco",
       bullets: [
-        "Built a stacked ensemble of LightGBM, XGBoost, and CatBoost to forecast city-wide traffic demand in Bangalore, reaching an OOF R² of 95.43 under a leakage-free cross-validation setup.",
-        "Engineered lag, rolling-window, and cyclical time features from spatiotemporal data; used out-of-fold predictions as meta-features to cut variance across the blend.",
-        "Placed 3rd in a time-boxed hackathon: framed an open-ended problem, shipped a working solution under deadline pressure, and defended the approach to judges."
+        "Build short-horizon forecasting models (LSTM, Transformer) on high-frequency demand time-series, benchmarked against statistical and gradient-boosted baselines with walk-forward, out-of-sample evaluation.",
+        "Engineer predictive features from noisy multi-source signals — weather, festival calendars, agricultural pump usage, industrial load cycles — and quantify each one's marginal contribution to forecast error."
       ],
-      techStack: ["Python", "LightGBM", "XGBoost", "CatBoost", "Pandas", "NumPy"],
+      techStack: ["Python", "Linux", "PyTorch", "TensorFlow", "LSTM", "Transformer", "Pandas", "NumPy", "Time-Series Analysis"],
       caseStudy: {
-        problem: "Forecast city-wide traffic demand across Bangalore from spatiotemporal data, inside a fixed hackathon window — the constraint wasn't just accuracy, it was getting a leakage-free, defensible model built and validated before the clock ran out.",
-        built: "A stacked ensemble of LightGBM, XGBoost, and CatBoost, fed lag, rolling-window, and cyclical time features engineered from the raw spatiotemporal signal, with out-of-fold predictions from the base models used as meta-features going into the blend.",
-        decision: "Used a leakage-free, out-of-fold cross-validation setup rather than a simpler train/test split — stacking is easy to accidentally leak information through if the base-model predictions used as meta-features were seen during their own training.",
-        simGap: "There's no simulator here — the equivalent constraint was the clock. Every hour spent on model architecture was an hour not spent validating the CV setup, and the model that ultimately placed had to be explained and defended to judges on the spot, not just scored offline.",
-        landed: "An OOF R² of 95.43 and 3rd position overall — the stacked ensemble held up under the leakage-free evaluation and the approach survived being questioned live."
+        problem: "Andhra Pradesh's State Load Despatch Centre needs short- and medium-term demand forecasts to schedule power procurement — an inaccurate forecast means either over-procuring (wasted cost) or under-procuring (risk to grid stability).",
+        built: "Short-horizon forecasting models (LSTM, Transformer) benchmarked against statistical and gradient-boosted baselines, fed by features engineered from noisy multi-source signals — weather, festival calendars, agricultural pump-set usage, industrial load cycles — with each feature's marginal contribution to forecast error quantified rather than assumed.",
+        decision: "Evaluated with walk-forward, out-of-sample validation instead of a single held-out split — a forecasting model that looks good on a random split can still fail in production, because that split lets it see patterns it wouldn't have access to at real deployment time.",
+        simGap: "There's no simulator standing in for the grid — the equivalent constraint is that the output goes to non-technical operators who have to act on it, not just a model that scores well offline. Every forecast has to be translated into a scheduling recommendation someone can actually use.",
+        landed: "Forecasting infrastructure in active use at the State Load Despatch Centre to reduce over/under-procurement and improve grid stability — reproducible Python workflows on Linux, ongoing."
       }
     },
     {

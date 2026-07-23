@@ -43,7 +43,7 @@ const DeckCard = ({ id, category, period, badge, title, sub, body, bullets, tags
   );
 };
 
-const CareerDeck = ({ education, experience, achievements, simulations }) => {
+const CareerDeck = ({ education, achievements, simulations }) => {
   const leadership = (achievements || []).filter(a => /^(Maintainer|Core Member)/.test(a.title));
   const awards = (achievements || []).filter(a => !/^(Maintainer|Core Member)/.test(a.title));
 
@@ -51,11 +51,6 @@ const CareerDeck = ({ education, experience, achievements, simulations }) => {
     ...(education || []).map((item, i) => ({
       key: `edu-${i}`, id: `edu-${item.institution}-${i}`, category: 'Education',
       period: item.period, title: item.degree, sub: item.institution, body: item.score
-    })),
-    ...(experience || []).map((item, i) => ({
-      key: `exp-${i}`, id: `exp-${item.institution}-${i}`, category: 'Experience',
-      period: item.period, badge: item.badge, title: item.title, sub: item.institution,
-      bullets: item.bullets, tags: item.techStack, link: item.link
     })),
     ...awards.map((item, i) => ({
       key: `award-${i}`, id: `award-${item.title}-${i}`, category: 'Achievement',
@@ -114,7 +109,7 @@ const CareerDeck = ({ education, experience, achievements, simulations }) => {
   return (
     <section id="timeline">
       <div className="section-heading">Career Deck</div>
-      <p className="section-sub">Education, experience, and the record so far — drag or use the arrows</p>
+      <p className="section-sub">Education, achievements, and the record so far — drag or use the arrows</p>
 
       <div className="deck-wrap">
         <button className="deck-nav deck-nav-prev" onClick={goPrev} disabled={active === 0} aria-label="Previous">‹</button>

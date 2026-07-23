@@ -26,9 +26,9 @@ const About = ({ data }) => {
             <p className="about-text">
               I'm currently an <strong>AI Engineer Intern at APTransco</strong>, building demand forecasting models
               for the <strong>Andhra Pradesh state grid</strong> — production forecasting infrastructure that real
-              grid operators use to make scheduling decisions. Outside of that, I've built ensemble models for a
-              Flipkart hackathon, a classification pipeline that won an Intra-IIT ML challenge, and a
-              perception-to-control pipeline for an autonomous quadrotor.
+              grid operators use to make scheduling decisions. Outside of that, I've built a classification
+              pipeline that won an Intra-IIT ML challenge and a perception-to-control pipeline for an
+              autonomous quadrotor.
             </p>
           </div>
           

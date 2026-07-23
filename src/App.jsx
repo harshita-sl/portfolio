@@ -97,7 +97,6 @@ function App() {
       <About data={resumeData.header} />
       <CareerDeck
         education={resumeData.education}
-        experience={resumeData.experience}
         achievements={resumeData.achievements}
         simulations={resumeData.simulations}
       />

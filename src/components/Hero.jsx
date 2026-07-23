@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import AnimatedStat from './AnimatedStat';
 
 const heroStats = [
-  { value: '95.43', label: 'OOF R² · Flipkart Gridlock Hackathon' },
   { value: '1st', label: 'Intra-IIT ML Challenge' },
   { value: '82%', label: 'Hazardous-asteroid classification accuracy' },
+  { value: '8.29', label: 'CGPA · IIT Bhilai' },
   { value: '4', label: 'ML & robotics systems shipped' }
 ];
 
