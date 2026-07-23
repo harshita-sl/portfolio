@@ -7,7 +7,7 @@ import Starfield from './components/Starfield';
 import Hero from './components/Hero';
 import Work from './components/Work';
 import About from './components/About';
-import MissionConsole from './components/MissionConsole';
+import CareerDeck from './components/CareerDeck';
 import SkillsOrbit from './components/SkillsOrbit';
 import Contact from './components/Contact';
 
@@ -43,7 +43,7 @@ function App() {
     };
     animCur();
 
-    const hoverElements = document.querySelectorAll('a, button, .node-card, .dot-outer');
+    const hoverElements = document.querySelectorAll('a, button, .deck-card-inner');
     const onEnter = () => {
       cur2.style.width = '50px'; 
       cur2.style.height = '50px'; 
@@ -95,7 +95,7 @@ function App() {
       <Hero data={resumeData.header} />
       <Work projects={resumeData.projects} />
       <About data={resumeData.header} />
-      <MissionConsole
+      <CareerDeck
         education={resumeData.education}
         experience={resumeData.experience}
         achievements={resumeData.achievements}

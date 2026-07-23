@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import AnimatedStat from './AnimatedStat';
+
+const heroStats = [
+  { value: '95.43', label: 'OOF R² · Flipkart Gridlock Hackathon' },
+  { value: '1st', label: 'Intra-IIT ML Challenge' },
+  { value: '82%', label: 'Hazardous-asteroid classification accuracy' },
+  { value: '4', label: 'ML & robotics systems shipped' }
+];
 
 const Hero = ({ data }) => {
   const [typedName, setTypedName] = useState([]);
@@ -33,6 +41,12 @@ const Hero = ({ data }) => {
           and <em>autonomous control</em> for a quadrotor. I like problems where the model has to hold up
           outside a notebook.
         </p>
+
+        <div className="hero-stats">
+          {heroStats.map((stat, i) => (
+            <AnimatedStat key={i} value={stat.value} label={stat.label} />
+          ))}
+        </div>
       </div>
 
       <div className="scroll-cue">
