@@ -38,32 +38,32 @@ export const resumeData = {
       badge: "Current",
       link: { text: "Project Repo" },
       bullets: [
-        "Build short-horizon forecasting models (LSTM, Transformer) on high-frequency demand time-series, benchmarked against statistical and gradient-boosted baselines with walk-forward, out-of-sample evaluation.",
-        "Engineer predictive features from noisy multi-source signals – weather, festival calendars, agricultural pump usage, industrial load cycles – and quantify each one's marginal contribution to forecast error.",
-        "Mine statewide consumption data for recurring load patterns and regime shifts, isolating the systematic drivers of demand variability and over/under-procurement.",
-        "Run reproducible Python research workflows on Linux and translate model output into scheduling recommendations for non-technical grid operators."
+        "Built and compared five architecturally different day-ahead forecasting approaches — gradient-boosted ensembles (LightGBM/CatBoost), a Temporal Fusion Transformer, and an OpenSTEF multi-horizon workflow among them — under one identical walk-forward, out-of-sample evaluation, and shipped the hybrid gradient-boosted ensemble that won.",
+        "Engineered 217 leakage-audited features from noisy multi-source signals – weather forecast/actuals, festival and second-Saturday calendars, agricultural lift-irrigation schedules – with a hard assertion that recomputes every lag feature at each fold's cutoff and checks it bit-identical before training.",
+        "Hardened the winning model into a live production service against SLDC's operational PostgreSQL database: validated the serving path against the backtest to within 0.05 points of MAPE, stress-tested it against demand-feed outages, and shipped monitoring plus an operator runbook.",
+        "Ran reproducible Python research workflows on Linux and translated forecasts into scheduling recommendations non-technical grid operators can act on directly."
       ],
-      techStack: ["Python", "Linux", "PyTorch", "TensorFlow", "LSTM", "Transformer", "Pandas", "NumPy", "Time-Series Analysis"]
+      techStack: ["Python", "Linux", "LightGBM", "CatBoost", "XGBoost", "PyTorch (TFT)", "PostgreSQL", "Pandas", "NumPy", "Time-Series Analysis"]
     }
   ],
   projects: [
     {
       id: "aptransco-forecasting",
-      title: "Demand Forecasting — APTransco (State Load Despatch Centre)",
+      title: "Day-Ahead Demand Forecasting — APTransco (State Load Despatch Centre)",
       link: null,
       domain: "ML · Production Systems",
       context: "AI Engineer Intern · APTransco",
       bullets: [
-        "Build short-horizon forecasting models (LSTM, Transformer) on high-frequency demand time-series, benchmarked against statistical and gradient-boosted baselines with walk-forward, out-of-sample evaluation.",
-        "Engineer predictive features from noisy multi-source signals — weather, festival calendars, agricultural pump usage, industrial load cycles — and quantify each one's marginal contribution to forecast error."
+        "Compared five architecturally different day-ahead forecasting approaches — gradient-boosted ensembles, a Temporal Fusion Transformer, an OpenSTEF multi-horizon workflow — under one identical walk-forward evaluation, and shipped the hybrid gradient-boosted ensemble that won: 3.27% MAPE overall, best of all four on the hardest out-of-sample day.",
+        "Engineered 217 leakage-audited features from weather, calendar, and irrigation signals, then hardened the winning model into a live production service against SLDC's PostgreSQL database — validated serving path, stress-tested feed outages, shipped monitoring and a runbook."
       ],
-      techStack: ["Python", "Linux", "PyTorch", "TensorFlow", "LSTM", "Transformer", "Pandas", "NumPy", "Time-Series Analysis"],
+      techStack: ["Python", "Linux", "LightGBM", "CatBoost", "XGBoost", "PyTorch (TFT)", "PostgreSQL", "Pandas", "NumPy", "Time-Series Analysis"],
       caseStudy: {
-        problem: "Andhra Pradesh's State Load Despatch Centre needs short- and medium-term demand forecasts to schedule power procurement — an inaccurate forecast means either over-procuring (wasted cost) or under-procuring (risk to grid stability).",
-        built: "Short-horizon forecasting models (LSTM, Transformer) benchmarked against statistical and gradient-boosted baselines, fed by features engineered from noisy multi-source signals — weather, festival calendars, agricultural pump-set usage, industrial load cycles — with each feature's marginal contribution to forecast error quantified rather than assumed.",
-        decision: "Evaluated with walk-forward, out-of-sample validation instead of a single held-out split — a forecasting model that looks good on a random split can still fail in production, because that split lets it see patterns it wouldn't have access to at real deployment time.",
-        simGap: "There's no simulator standing in for the grid — the equivalent constraint is that the output goes to non-technical operators who have to act on it, not just a model that scores well offline. Every forecast has to be translated into a scheduling recommendation someone can actually use.",
-        landed: "Forecasting infrastructure in active use at the State Load Despatch Centre to reduce over/under-procurement and improve grid stability — reproducible Python workflows on Linux, ongoing."
+        problem: "SLDC needs a forecast of state demand at 15-minute resolution — 96 blocks — for the entire next day, issued every evening before any of that day has happened, to schedule power procurement. Under the Deviation Settlement Mechanism, the utility bears the financial cost of any mismatch between scheduled and actual demand, and AP's demand is unusually weather- and calendar-sensitive: cyclones cause sharp short-lived collapses, and a dense holiday/second-Saturday/agricultural calendar produces dips a naive model reads as noise.",
+        built: "Rather than commit to one model upfront, built and compared five architecturally different approaches under one identical walk-forward evaluation: a dense-lag gradient-boosted ensemble (LightGBM + CatBoost), a Temporal Fusion Transformer, an OpenSTEF multi-horizon workflow, a leakage-safe exogenous-only ensemble, and a hybrid of the last two. The hybrid — blending 209 weather/calendar features with 8 deliberately coarse demand-lag features through a regime gate, residual corrector, and conformal calibration — won, and was hardened into the model now issuing genuine live day-ahead forecasts from SLDC's PostgreSQL database.",
+        decision: "The hybrid ensemble wasn't the best on average — a lag-heavy flat ensemble was fractionally more accurate overall (3.01% vs. 3.27% MAPE). It was chosen because the ranking inverts on the day it matters most: on Cyclone Montha's landfall day, the hybrid held 12.8% MAPE against the flat ensemble's 15.9%, because four independent safeguards kept its two lag-aware members from being trusted on the one kind of day where yesterday's demand stops being a useful guide to today's.",
+        simGap: "There's no simulator standing in for the grid — the equivalent constraint is that a forecast which scores well offline is worthless until it's translated into a scheduling number a non-technical operator can act on. That constraint got concrete once the model went live: the real SLDC database schema didn't match its documented spec and had to be confirmed by direct sampling before serving code could be written against it, and a single corrupted 15-minute SCADA reading — just under the existing bad-data threshold — silently pulled a live forecast down by roughly 900 MW before a shape-based outlier check closed that gap.",
+        landed: "The first genuine live day-ahead forecast, sourced directly from the operational database, issued 13 July 2026. Validated with a 38-day shadow run that matched the production serving path to the backtest within 0.05 points of MAPE, and stress-tested against demand-feed outages (0–3 day freezes, 152 forecast calls, zero crashes) — shipped with monitoring, a retrain policy, and an operator runbook."
       }
     },
     {
