@@ -1,10 +1,11 @@
 import React from 'react';
-import resumeFile from '../assets/Harshita_Sharma_resume.pdf';
+import resumeFile from '../assets/Harshita_IITBH_resume.pdf';
 
 const About = ({ data }) => {
   // Extract LinkedIn and GitHub links from data.links
   const githubLink = data.links.find(l => l.label === 'GitHub')?.url || '#';
   const linkedinLink = data.links.find(l => l.label === 'LinkedIn')?.url || '#';
+  const xLink = "https://x.com/Harshit45268856";
   const instagramLink = "https://www.instagram.com/3d__dreamer_/";
 
   return (
@@ -17,13 +18,16 @@ const About = ({ data }) => {
         <div className="about-grid">
           <div className="about-main">
             <p className="about-text">
-              I am a <strong>Mechanical Engineering student</strong> at <strong>IIT Bhilai</strong> with a deep focus on <strong>Robotics</strong> and <strong>Machine Learning</strong>. 
-              My journey involves bridging the gap between mechanical systems and intelligent software, specializing in autonomous drone systems, vision-based navigation, and high-fidelity simulations.
+            I am a <strong>Mechanical Engineering student</strong> at <strong>IIT Bhilai</strong> with a passion for building intelligent autonomous systems at the intersection of <strong>Robotics</strong>, <strong>Machine Learning</strong>, and <strong>Software Engineering</strong>. My work focuses on developing reliable, production-ready solutions that combine perception, control, and data-driven decision making.
             </p>
+
             <p className="about-text">
-              I am deeply invested in the integration of <strong>Blockchain technology</strong> with <strong>Machine Learning</strong> to create decentralized, high-trust intelligent systems. 
-              My work explores how predictive models can be deployed on-chain for secure data verification and automated decision-making in robotics and smart infrastructure.
-            </p>
+            I have hands-on experience building <strong>ROS 2</strong> and <strong>PX4</strong> based autonomous drone systems, designing distributed multi-process architectures, and developing machine learning models for real-world forecasting and risk prediction. I enjoy solving challenging engineering problems, from vision-based navigation and control systems to scalable ML pipelines and open-source software development.
+          </p>
+
+          <p className="about-text">
+            Currently, I am expanding my expertise in <strong>Artificial Intelligence</strong>, <strong>Computer Vision</strong>, and <strong>Autonomous Robotics</strong>, while contributing to open-source projects and exploring technologies that make intelligent systems more reliable, efficient, and impactful.
+          </p>
           </div>
           
           <div className="about-sidebar">
@@ -57,6 +61,13 @@ const About = ({ data }) => {
                 <div className="social-icon-label">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                   <span className="social-tag">Instagram</span>
+                </div>
+                <span className="social-arrow">↗</span>
+              </a>
+              <a href={xLink} target="_blank" rel="noopener noreferrer" className="social-box x">
+                <div className="social-icon-label">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  <span className="social-tag">X</span>
                 </div>
                 <span className="social-arrow">↗</span>
               </a>

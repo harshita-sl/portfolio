@@ -7,7 +7,7 @@ export const resumeData = {
     name: "Harshita Sharma",
     links: [
       { label: "GitHub", text: "harshita-sl", url: "https://github.com/harshita-sl" },
-      { label: "LinkedIn", text: "Harshita Sharma", url: "https://linkedin.com/in/harshita-sharma" },
+      { label: "LinkedIn", text: "Harshita Sharma", url: "https://linkedin.com/in/harshita-slr" },
       { label: "Email", text: "harshitas@iitbhilai.ac.in", url: "mailto:harshitas@iitbhilai.ac.in" },
       { label: "Phone", text: "+91 9990379497", url: "tel:+919990379497" }
     ],
@@ -50,13 +50,34 @@ export const resumeData = {
     {
       title: "Autonomous Precision Landing of Quadrotor on Aruco Marker",
       video: `${import.meta.env.BASE_URL}videos/drone_video.mp4`,
-      link: { text: "View Repo", url: "https://github.com/harshita-sl/Autonomous_quad_landing" },
+      link: { text: "View Repo", url: "https://github.com/harshita-sl/QUAD" },
       bullets: [
         "Developed and tested autonomous flight control algorithms for vision-based precision landing using ArUco marker detection",
         "Designed and assembled quadrotor hardware with Pixhawk 2.4.8 flight controller and Raspberry Pi 5 companion computer",
         "Created comprehensive simulation environment using PX4-Autopilot, Gazebo Classic, ROS2 Humble, and MAVROS for algorithm validation before hardware deployment"
       ],
       techStack: ["PX4-autopilot", "MAVROS", "Qgroundcontrol", "Pixhawk 2.4.8", "Raspberry pi5", "Depth camera"]
+    },
+    {
+      title: "Lexa – Indian Languages Learning Platform",
+      link: {
+        text: "View Repo",
+        url: "https://github.com/harshita-sl/Lexa-The-Indian-languages-learning-app"
+      },
+      bullets: [
+        "Building a modern web application to help users learn Indian languages through interactive lessons, quizzes, and gamified learning experiences.",
+        "Developing a responsive frontend using Next.js and React with reusable UI components, intuitive navigation, and mobile-friendly design.",
+        "Designing the application architecture with scalability in mind, with plans to integrate user authentication, progress tracking, and personalized learning recommendations."
+      ],
+      techStack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
     },
     {
       title: "Renewable Energy Forecasting",
@@ -71,7 +92,7 @@ export const resumeData = {
     },
     {
       title: "Asteroid Risk Classification",
-      link: { text: "Notebook", url: "https://colab.research.google.com/drive/1FRw6fwIQ8R711dM7VIZPZESYOUsXBIrf" },
+      link: { text: "Notebook", url: "https://github.com/harshita-sl/Aestroid-risk-classification" },
       bullets: [
         "Developed a machine learning model to classify asteroids as hazardous or non-hazardous based on orbital and physical parameters.",
         "Implemented and compared Random Forest and XGBoost models, achieving highest accuracy of 82% using XGBoost.",
@@ -79,21 +100,22 @@ export const resumeData = {
       ],
       techStack: ["XG Boost", "Matplotlib", "Seaborn", "Classification Models"]
     }
+    
   ],
   achievements: [
     {
       title: "First Position - Asteroid Risk Classification Challenge",
-      link: { text: "View", url: "#" },
+      link: { text: "View", url: "https://drive.google.com/file/d/1l83uT1A3sAl7XuszbaDF4CXPE8DsYHS8/view?usp=sharing" },
       description: "Winner of Intra-IIT Machine Learning Challenge. Developed classification model using advanced feature engineering, model selection, and hyperparameter optimization techniques."
     },
     {
       title: "Third Position - Summer ChainRxn Bootcamp",
-      link: { text: "View", url: "#" },
+      link: { text: "View", url: "https://github.com/harshita-sl/Chainrxn-pro2" },
       description: "Secured third position in web development bootcamp. Developed animated front-end landing page with modern UI/UX principles."
     },
     {
       title: "MATLAB Machine Learning Certifications",
-      link: { text: "Cert 1 - Cert 2", url: "#" },
+      link: { text: "Cert 1 - Cert 2", url: "https://drive.google.com/file/d/1eXbDWYWbxcrEo7zbfEG7qiFdG-yqNsmu/view?usp=sharing" },
       description: "Completed MATLAB Machine Learning Onramp and Classification Models specialized courses."
     },
     {
@@ -103,7 +125,7 @@ export const resumeData = {
     },
     {
       title: "Maintainer - OpenLake",
-      link: { text: "IIT Bhilai", url: "https://github.com/OpenLake" },
+      link: { text: "IIT Bhilai", url: "#" },
       description: "Maintainer of the student-led open-source development club at IIT Bhilai. Mentored juniors, managed university-wide projects, and promoted open-source culture on campus."
     }
   ],
