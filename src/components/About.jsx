@@ -1,5 +1,5 @@
 import React from 'react';
-import resumeFile from '../assets/Harshita_IITBH_resume.pdf';
+import resumeFile from '../assets/Resume_harshita.pdf';
 
 const About = ({ data }) => {
   // Extract LinkedIn and GitHub links from data.links
@@ -37,7 +37,7 @@ const About = ({ data }) => {
                 <h3>Curriculum Vitae</h3>
                 <p>Detailed overview of my academic and technical journey.</p>
               </div>
-              <a href={resumeFile} download="Harshita_Sharma_Resume.pdf" className="btn-resume">
+              <a href={resumeFile} download="Resume_harshita.pdf" className="btn-resume">
                 Download Resume
               </a>
             </div>
@@ -66,7 +66,7 @@ const About = ({ data }) => {
               </a>
               <a href={xLink} target="_blank" rel="noopener noreferrer" className="social-box x">
                 <div className="social-icon-label">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
                   <span className="social-tag">X</span>
                 </div>
                 <span className="social-arrow">↗</span>
