@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const Hero = ({ data }) => {
   const [typedName, setTypedName] = useState([]);
-  
+
   useEffect(() => {
     if (data && data.name) {
       const letters = data.name.split('');
@@ -14,8 +14,8 @@ const Hero = ({ data }) => {
     <section id="hero">
       <div className="hero-spline">
         <div className="spline-wrap">
-          <spline-viewer 
-            url="https://prod.spline.design/75fTLlPIu8VIqV9G/scene.splinecode" 
+          <spline-viewer
+            url="https://prod.spline.design/75fTLlPIu8VIqV9G/scene.splinecode"
             style={{ width: "100%", height: "100%" }}>
           </spline-viewer>
         </div>
@@ -36,14 +36,14 @@ const Hero = ({ data }) => {
             ))}
           </div>
         </div>
-        <p className="hero-subtitle">Engineer · <em>Roboticist</em> · ML Explorer · <em>3D Artist</em></p>
+        <p className="hero-subtitle">Engineer · <em>ML Explorer</em> · 3D Artist</p>
       </div>
 
       <div className="scroll-cue">
         <span>Scroll to explore</span>
         <div className="scroll-arrow"></div>
       </div>
-      <style dangerouslySetInnerHTML={{__html: ``}}/>
+      <style dangerouslySetInnerHTML={{ __html: `` }} />
     </section>
   );
 };
