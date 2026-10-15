@@ -11,22 +11,27 @@ import SkillsOrbit from './components/SkillsOrbit';
 import Contact from './components/Contact';
 
 function App() {
-  // Cursor follower logic
+  // Cursor follower logic — only on devices with a precise pointer and no
+  // reduced-motion preference, so it never wastes battery on touch devices.
   useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!finePointer || reducedMotion) return;
+
     const cur = document.createElement('div');
     const cur2 = document.createElement('div');
-    
+
     cur.style.cssText = 'position:fixed; width:8px; height:8px; background:var(--gold); border-radius:50%; pointer-events:none; z-index:9999; mix-blend-mode:difference; transition:transform .15s; top:0; left:0;';
     cur2.style.cssText = 'position:fixed; width:32px; height:32px; border:1px solid rgba(201,168,76,.4); border-radius:50%; pointer-events:none; z-index:9998; top:0; left:0; transition:width .2s, height .2s;';
-    
+
     document.body.appendChild(cur);
     document.body.appendChild(cur2);
 
     let mx = 0, my = 0, rx = 0, ry = 0;
     const updateMouse = (e) => {
-      mx = e.clientX; 
+      mx = e.clientX;
       my = e.clientY;
-      cur.style.left = (mx - 4) + 'px'; 
+      cur.style.left = (mx - 4) + 'px';
       cur.style.top = (my - 4) + 'px';
     };
 
@@ -34,9 +39,9 @@ function App() {
 
     let reqId;
     const animCur = () => {
-      rx += (mx - rx - 16) * 0.1; 
+      rx += (mx - rx - 16) * 0.1;
       ry += (my - ry - 16) * 0.1;
-      cur2.style.left = rx + 'px'; 
+      cur2.style.left = rx + 'px';
       cur2.style.top = ry + 'px';
       reqId = requestAnimationFrame(animCur);
     };
@@ -44,13 +49,13 @@ function App() {
 
     const hoverElements = document.querySelectorAll('a, button, .node-card, .dot-outer');
     const onEnter = () => {
-      cur2.style.width = '50px'; 
-      cur2.style.height = '50px'; 
+      cur2.style.width = '50px';
+      cur2.style.height = '50px';
       cur.style.transform = 'scale(2)';
     };
     const onLeave = () => {
-      cur2.style.width = '32px'; 
-      cur2.style.height = '32px'; 
+      cur2.style.width = '32px';
+      cur2.style.height = '32px';
       cur.style.transform = 'scale(1)';
     };
 
@@ -91,16 +96,18 @@ function App() {
     <>
       <Starfield />
       <Navbar />
-      <Hero data={resumeData.header} />
-      <About data={resumeData.header} />
-      <Timeline 
-        education={resumeData.education} 
-        experience={resumeData.experience} 
-        projects={resumeData.projects} 
-        achievements={resumeData.achievements} 
-        simulations={resumeData.simulations}
-      />
-      <SkillsOrbit skills={resumeData.skills} />
+      <main>
+        <Hero data={resumeData.header} />
+        <About data={resumeData.header} />
+        <Timeline
+          education={resumeData.education}
+          experience={resumeData.experience}
+          projects={resumeData.projects}
+          achievements={resumeData.achievements}
+          simulations={resumeData.simulations}
+        />
+        <SkillsOrbit skills={resumeData.skills} />
+      </main>
       <Contact email={emailLink} links={contactLinks} />
     </>
   );

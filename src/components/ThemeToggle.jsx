@@ -4,9 +4,8 @@ const ThemeToggle = () => {
   const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    // Initial theme set
     document.documentElement.setAttribute('data-theme', theme);
-  }, []);
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';

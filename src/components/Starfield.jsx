@@ -10,10 +10,13 @@ const Starfield = () => {
     let stars = [];
     let animationFrameId;
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const initStars = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      stars = Array.from({ length: 250 }, () => ({
+      const count = Math.min(250, Math.max(120, Math.floor(canvas.width / 4)));
+      stars = Array.from({ length: count }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         r: Math.random() * 1.5 + 0.5,
@@ -36,29 +39,33 @@ const Starfield = () => {
       const particleColor = isDark ? gold : '#000000';
 
       stars.forEach(s => {
-        // Move particles slightly
-        s.x += s.vx;
-        s.y += s.vy;
+        if (!reducedMotion) {
+          // Move particles slightly
+          s.x += s.vx;
+          s.y += s.vy;
 
-        // Wrap around screens
-        if (s.x < 0) s.x = canvas.width;
-        if (s.x > canvas.width) s.x = 0;
-        if (s.y < 0) s.y = canvas.height;
-        if (s.y > canvas.height) s.y = 0;
-        
-        // Twinkle
-        s.o += s.d;
-        if (s.o > 1 || s.o < 0.1) s.d *= -1;
-        
+          // Wrap around screens
+          if (s.x < 0) s.x = canvas.width;
+          if (s.x > canvas.width) s.x = 0;
+          if (s.y < 0) s.y = canvas.height;
+          if (s.y > canvas.height) s.y = 0;
+
+          // Twinkle
+          s.o += s.d;
+          if (s.o > 1 || s.o < 0.1) s.d *= -1;
+        }
+
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        
-        ctx.fillStyle = particleColor; 
+
+        ctx.fillStyle = particleColor;
         ctx.globalAlpha = s.o;
         ctx.fill();
       });
       ctx.globalAlpha = 1.0;
-      animationFrameId = requestAnimationFrame(drawStars);
+      if (!reducedMotion) {
+        animationFrameId = requestAnimationFrame(drawStars);
+      }
     };
     drawStars();
 
