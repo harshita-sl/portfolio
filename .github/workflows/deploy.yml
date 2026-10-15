@@ -21,6 +21,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # This repo also has the implicit "pages-build-deployment" branch build
+      # enabled in Pages settings. Both race on push and the LAST deployment
+      # wins — the raw branch source (unbuilt index.html) would overwrite the
+      # real built artifact. Delay so this artifact deploys last.
+      - name: Wait for branch-based Pages build to finish
+        run: sleep 90
+
       - uses: actions/checkout@v4
 
       - name: Set up Node
